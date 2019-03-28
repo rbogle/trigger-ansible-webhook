@@ -1,0 +1,18 @@
+[
+  {
+    "id": "trigger-ansible",
+    "execute-command": "/root/trigger_ansible_playbook.sh",
+    "command-working-directory": "/root",
+    "pass-arguments-to-command":
+    [
+      {
+        "source": "url",
+        "name": "playbook"
+      },
+      { 
+        "source": "url",
+        "name": "host"
+      }
+    ]
+  }
+]

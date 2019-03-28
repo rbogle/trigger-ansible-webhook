@@ -1,0 +1,20 @@
+[Unit]
+Description=Webhook service
+ConditionPathExists=/usr/local/sbin/webhook
+After=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+LimitNOFILE=1024
+
+Restart=on-failure
+RestartSec=10
+startLimitIntervalSec=60
+
+WorkingDirectory=/var/webhook
+ExecStart=/usr/local/sbin/webhook -hooks /etc/webhook/hooks.json 
+
+[Install]
+WantedBy=multi-user.target
